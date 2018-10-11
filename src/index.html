@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrap">
+
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/handlebars-v4.0.12.js"></script>
+    <script type="text/x-handlebars-template" id="tpl">
+        <dl class="list"></dl>
+        {{#each this}}
+        <dt>{{this.title}}</dt>
+        <dd>
+            <img src="{{this.img}}" alt="">
+            <p>{{this.price}}</p>
+        </dd>
+        {{/each}}
+        </dl>
+    </script>
+    <script>
+        var data = [{
+            title: "满300减30",
+            img: "./img/img1.jpg",
+            price: 489
+        }, {
+            title: "满300减50",
+            img: "./img/img2.jpg",
+            price: 599
+        }, {
+            title: "3件8折",
+            img: "./img/img3.jpg",
+            price: 99
+        }, {
+            title: "满999减100",
+            img: "./img/img4.jpg",
+            price: 1299
+        }, {
+            title: "满五免一",
+            img: "./img/img5.jpg",
+            price: 39
+        }];
+        // 获取模板
+        var tpl = $("#tpl").html();
+        console.log(tpl);
+        // 编译模板
+        var template = Handlebars.compile(tpl);
+        // 传入数据
+        var html = template(data);
+        // 渲染数据
+        $(".wrap").html(html);
+    </script>
+    <!-- 1.将以上数据正确采用Handlebars.js渲染到页面中，效果为：标题下放图片，图片下放价格。
+    2.使用ruquire.js管理引入的库
+    3.使用gulp启动服务器并提供数据
+    正确配置git，并能提交至远程服务器 -->
+</body>
+
+</html>
